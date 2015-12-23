@@ -2,29 +2,27 @@
     'use strict';
 
     function getBiggestPossibleLoss(arr) {
-        var t0 = arr[0];
-        var t1 = arr[1];
-        var selling;
-        var res;
+        var t0;
+        var t1;
+        var buying;
+        var interimResult;
+        var res = 0;
         var i;
-        for (i = 2; i < arr.length; i++) {
-            if (arr[i] <= t1) {
-                t1 = arr[i];
-                selling = i;
+        var j;
+        for (i = 0; i < arr.length; i++) {
+            t0 = arr[i];
+            for (j = i + 1; j < arr.length; j++) {
+                t1 = arr[j];
+                interimResult = t1 - t0;
+                if (interimResult < res) {
+                    res = interimResult;
+                }
             }
-        }
-        for (i = 1; i < selling; i++) {
-            if (arr[i] > t0) {
-                t0 = arr[i];
-            }
-        }
-        if (t0 > t1) {
-            res = t1 - t0;
-        } else {
-            res = 0;
         }
         return res;
     }
     console.log(getBiggestPossibleLoss([3, 2, 4, 2, 1, 5]));
     console.log(getBiggestPossibleLoss([1, 2, 4, 4, 5]));
+    console.log(getBiggestPossibleLoss([1, 2, 4, 4, 5, 1, 100, 50, 4, 110]));
+    console.log(getBiggestPossibleLoss([1, 2, 4, 25, 5, 8, 7, 5, 10, 20, 5, 17, 3]));
 })();
