@@ -4,7 +4,6 @@
     function getBiggestPossibleLoss(arr) {
         var t0;
         var t1;
-        var buying;
         var interimResult;
         var res = 0;
         var i;
